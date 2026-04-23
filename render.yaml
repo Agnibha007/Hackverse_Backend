@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: phi-api
+    env: node
+    plan: free
+    region: oregon
+    buildCommand: "npm install"
+    startCommand: "npm start"
+    healthCheckPath: /health
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: phi-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CORS_ORIGIN
+        value: "https://hackverse-frontend.vercel.app"
+
+  - type: pserv
+    name: phi-db
+    plan: free
+    region: oregon
+    databaseName: phi
+    user: neon_user

@@ -12,6 +12,7 @@ import analyticsRoutes from "./routes/analyticsRoutes.js";
 import subjectRoutes from "./routes/subjectRoutes.js";
 import aiRoutes from "./routes/aiRoutes.js";
 import collectibleRoutes from "./routes/collectibleRoutes.js";
+import socialRoutes from "./routes/socialRoutes.js";
 import db from "./db/index.js";
 
 dotenv.config();
@@ -39,6 +40,7 @@ app.use("/api/analytics", authMiddleware, analyticsRoutes);
 app.use("/api/subjects", authMiddleware, subjectRoutes);
 app.use("/api/ai", authMiddleware, aiRoutes);
 app.use("/api/collectibles", authMiddleware, collectibleRoutes);
+app.use("/api/social", authMiddleware, socialRoutes);
 
 app.use(notFoundHandler);
 app.use(errorHandler);
